@@ -284,13 +284,13 @@
 
             <!-- Interactive Coursework Tabs / Filter -->
             <div class="flex justify-center gap-2 sm:gap-4 mb-8">
-                <button onclick="filterCourses('all')" id="btn-all" class="course-tab-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-navy-900 text-white transition-all shadow-sm">
+                <button id="btn-all" data-category="all" id="btn-all" class="course-tab-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-navy-900 text-white transition-all shadow-sm">
                     All Courses (7)
                 </button>
-                <button onclick="filterCourses('completed')" id="btn-completed" class="course-tab-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-white text-slate-600 hover:bg-slate-200 transition-all border border-slate-200">
+                <button id="btn-completed" data-category="completed" id="btn-completed" class="course-tab-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-white text-slate-600 hover:bg-slate-200 transition-all border border-slate-200">
                     Completed (4)
                 </button>
-                <button onclick="filterCourses('upcoming')" id="btn-upcoming" class="course-tab-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-white text-slate-600 hover:bg-slate-200 transition-all border border-slate-200">
+                <button id="btn-upcoming" data-category="upcoming" id="btn-upcoming" class="course-tab-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-white text-slate-600 hover:bg-slate-200 transition-all border border-slate-200">
                     In Progress / Upcoming (3)
                 </button>
             </div>
@@ -689,7 +689,7 @@
                 <div class="lg:col-span-7 bg-slate-50 p-8 sm:p-10 rounded-3xl border border-slate-200">
                     <h3 class="text-xl font-heading font-bold text-slate-900 mb-6">Send a Message</h3>
                     
-                    <form id="contact-form" class="space-y-5" onsubmit="handleFormSubmit(event)">
+                    <form id="contact-form" class="space-y-5">
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                             <div>
                                 <label for="sender-name" class="block text-xs font-semibold text-slate-700 mb-2">Your Name</label>
@@ -740,85 +740,6 @@
             </p>
         </div>
     </footer>
-
-    <!-- JavaScript Interactions -->
-    <script>
-        // Initialize Lucide Icons
-        lucide.createIcons();
-
-        // Set Dynamic Copyright Year
-        document.getElementById('current-year').textContent = new Date().getFullYear();
-
-        // Mobile Navigation Toggle Logic
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        // Close mobile drawer when clicking links
-        document.querySelectorAll('.mobile-link').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
-        });
-
-        // Interactive Coursework Filter Tabs Logic
-        function filterCourses(category) {
-            const courses = document.querySelectorAll('.course-card');
-            const btns = document.querySelectorAll('.course-tab-btn');
-
-            // Reset Tab Button Styling
-            btns.forEach(btn => {
-                btn.className = 'course-tab-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-white text-slate-600 hover:bg-slate-200 transition-all border border-slate-200';
-            });
-
-            // Set Active Tab Button
-            const activeBtn = document.getElementById(`btn-${category}`);
-            if (activeBtn) {
-                activeBtn.className = 'course-tab-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-navy-900 text-white transition-all shadow-sm';
-            }
-
-            // Filter Grid Items
-            courses.forEach(course => {
-                if (category === 'all') {
-                    course.classList.remove('hidden');
-                } else if (category === 'completed') {
-                    if (course.classList.contains('completed-course')) {
-                        course.classList.remove('hidden');
-                    } else {
-                        course.classList.add('hidden');
-                    }
-                } else if (category === 'upcoming') {
-                    if (course.classList.contains('upcoming-course')) {
-                        course.classList.remove('hidden');
-                    } else {
-                        course.classList.add('hidden');
-                    }
-                }
-            });
-        }
-
-        // Contact Form Handling (Without alert)
-        function handleFormSubmit(event) {
-            event.preventDefault();
-            
-            const feedbackBox = document.getElementById('form-feedback');
-            const name = document.getElementById('sender-name').value;
-
-            // Show success feedback
-            feedbackBox.className = 'mt-4 p-4 rounded-xl text-xs font-medium text-center bg-teal-50 text-teal-800 border border-teal-200 block';
-            feedbackBox.textContent = `Thank you, ${name}! Your message has been prepared. Since this is a static showcase portfolio, please also reach Patrick directly via Email or Phone!`;
-
-            // Reset form input fields
-            document.getElementById('contact-form').reset();
-
-            // Hide message after 8 seconds
-            setTimeout(() => {
-                feedbackBox.classList.add('hidden');
-            }, 8000);
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
