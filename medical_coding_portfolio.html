@@ -684,6 +684,43 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Interactive Contact Form -->
+                <div class="lg:col-span-7 bg-slate-50 p-8 sm:p-10 rounded-3xl border border-slate-200">
+                    <h3 class="text-xl font-heading font-bold text-slate-900 mb-6">Send a Message</h3>
+                    
+                    <form id="contact-form" class="space-y-5" onsubmit="handleFormSubmit(event)">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div>
+                                <label for="sender-name" class="block text-xs font-semibold text-slate-700 mb-2">Your Name</label>
+                                <input type="text" id="sender-name" required placeholder="John Doe" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent text-sm bg-white">
+                            </div>
+                            <div>
+                                <label for="sender-email" class="block text-xs font-semibold text-slate-700 mb-2">Your Email</label>
+                                <input type="email" id="sender-email" required placeholder="john@example.com" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent text-sm bg-white">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="subject" class="block text-xs font-semibold text-slate-700 mb-2">Subject</label>
+                            <input type="text" id="subject" required placeholder="Entry-Level Inquiry / Networking" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent text-sm bg-white">
+                        </div>
+
+                        <div>
+                            <label for="message" class="block text-xs font-semibold text-slate-700 mb-2">Message</label>
+                            <textarea id="message" rows="5" required placeholder="Hello Patrick, I came across your Medical Billing & Coding portfolio..." class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent text-sm bg-white resize-none"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-3.5 px-6 rounded-xl bg-navy-900 hover:bg-navy-800 text-teal-400 font-bold text-sm transition-all shadow-md flex items-center justify-center gap-2">
+                            <i data-lucide="send" class="w-4 h-4"></i>
+                            <span>Send Inquiry</span>
+                        </button>
+                    </form>
+
+                    <!-- Form Feedback Alert Message Box (Replaces alert) -->
+                    <div id="form-feedback" class="hidden mt-4 p-4 rounded-xl text-xs font-medium text-center"></div>
+                </div>
+
             </div>
         </div>
     </section>
